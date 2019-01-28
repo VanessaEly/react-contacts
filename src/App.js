@@ -19,12 +19,6 @@ class App extends Component {
   // PS: avoid initializing that state with props, the current state will not change unless the component is "refreshed."
   // and also to avoid duplication of data
 
-
-  // We can't simply change the state, because react won't know that the state was changed.
-  // To update it, we have to use this.setState(), which can receive a function that receives the previous state
-  // and returns an object that will be merged with the current state of the component.
-  // Instead of that, you can also pass an object, which will be merged with the current state.
-  // Your UI is just a function of your state
   state = {
     contacts: [
       {
@@ -49,6 +43,11 @@ class App extends Component {
   }
   // if we want to create components that modify data, we have to do it in the component where the data lives
   removeContact = (contact) => {
+    // We can't simply change the state, because react won't know that the state was changed.
+    // To update it, we have to use this.setState(), which can receive a function that receives the previous state
+    // and returns an object that will be merged with the current state of the component.
+    // Instead of that, you can also pass an object, which will be merged with the current state.
+    // Your UI is just a function of your state
     // passing object instead of function
     // this.setState({
     //   key: 'tyler';
