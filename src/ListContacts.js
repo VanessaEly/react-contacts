@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 // Components concerns > Which state in the application, and how does my UI change based on that state
 
 // using class
+// Controlled components control the state of a form, instead of having their state inside of the DOM
+// Benefits: Instant input validation, conditionally disable for months, enforce input formats
 class ListContacts extends Component {
     constructor() {
         super(); // calling super method is required
@@ -83,7 +85,7 @@ class ListContacts extends Component {
 };
 
 // STATELESS FUNCTION component (If your component does not keep track of internal state, only renders)
-// if you only need the render() propery (only render something), it's acttually better to use a function instead of a class
+// if you only need the render() propery (only render something), it's actually better to use a function instead of a class
 // functions can also return JSX components, but they need to receive the props as parameters
 // and stop using the this keyword (before it was this.props, now only props)
 
@@ -109,9 +111,6 @@ class ListContacts extends Component {
 //         ))}
 //     </ol>
 // );
-
-// Controlled components control the state of a form, instead of having their state inside of the DOM
-// Benefits: Instant input validation, conditionally disable for months, enforce input formats
 
 // components should be the default export
 export default ListContacts;

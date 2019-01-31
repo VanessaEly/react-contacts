@@ -4,10 +4,10 @@ import './App.css';
 
 class App extends Component {
   // Props refer to attributes from parent components, props represent "read-only" data that are immutable.
-  // But a component's STATE, represents mutable data thataffects what is rendered on the page.
+  // But a component's STATE, represents mutable data that affects what is rendered on the page.
   // State is managed internally by the component itself and is meant to change over time,
   // commonly due to user input (e.g., clicking on a button on the page).
-  // By having a component manage its own state,bany time there are changes made to that state,
+  // By having a component manage its own state, many times there are changes made to that state,
   // React will know and automatically make the necessary updates to the page.
   // This process of determining what has changed in the previous and new outputs is called Reconciliation.
 
