@@ -1,5 +1,6 @@
 import React, { Component } from 'react'; // Component only if using class
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'; // used to create routes
 
 // Components concerns > Which state in the application, and how does my UI change based on that state
 
@@ -47,6 +48,12 @@ class ListContacts extends Component {
                 <div className='list-contacts-top'>
                     <input className='search-contacts' type='text' placeholder='Search Contacts'
                     value={query} onChange={(event) => this.updateQuery(event.target.value)}/>
+                    {/* routes to route /create
+                    By passing a to property to the Link component, you tell your app which path to route to.
+                    you can pass along query parameters or link to specific parts of a page,
+                    instead of passing a string to Links to prop, you can pass it an object like this,
+                    <Link to={{ pathname: '/courses', search: '?sort=name', hash: '#the-hash', state: { fromDashboard: true }}}></Link> */}
+                    <Link to="/create" className="add-contact">Add</Link>
                 </div>
                 
                 {showingContacts.length !== contacts.length && (

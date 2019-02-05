@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ListContacts from './ListContacts'
 import './App.css';
 import * as ContactsAPI from './utils/ContactsAPI'; 
-
+import CreateContact from './CreateContact';
+import { Route } from 'react-router-dom';
 /* Composition
     Combining simple functions together to create complex functions.
     React builds up pieces of a UI using components.
@@ -108,9 +109,24 @@ class App extends Component {
     console.log('rendering...');
     return (
       <div className="App">
-        {/* prop is any input that you pass to a React component, contact is a prop which will be acessible through
-        this.props.contacts inside of ListContacts */}
+      {/* using route to check current path and render the content needed
+      need to use exact for '/', because '/create' tecnically has '/' too
+      render receives a function that returns the content that should be rendered */}
+      <Route exact path='/' render={() => (
         <ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact}/>
+      )} />
+      {/* If we only need to pass a component, we can use the tag 'component' and simply pass the component to it */}
+      <Route path='/create' component={CreateContact} />
+      {/* What we're using here is a JavaScript technique called short-circuit evaluation.
+      If the first expression evaluates to true, then the second expression is run */}
+        {/* {this.state.screen === 'list' ? (
+          <ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact} onNavigate={(event) => {
+            event.preventDefault();
+            this.setState(() => ({ screen: 'create' }));
+          }}/>
+        ):(
+          <CreateContact />
+        )} */}
       </div>
     );
   }
