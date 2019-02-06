@@ -102,6 +102,14 @@ class App extends Component {
 
     ContactsAPI.remove(contact);
   }
+
+  createContact = (contact) => {
+    ContactsAPI.create(contact).then((contact) => {
+      this.setState((currState) => ({
+        contacts: currState.contacts.concat([contact]),
+      }));
+    });
+  }
   
   // The render method should be free from side effects, it shouldn't do anything that is asynchronous
   // it should only receive props and return a description of the UI (JSX)
@@ -116,7 +124,18 @@ class App extends Component {
         <ListContacts contacts={this.state.contacts} onDeleteContact={this.removeContact}/>
       )} />
       {/* If we only need to pass a component, we can use the tag 'component' and simply pass the component to it */}
-      <Route path='/create' component={CreateContact} />
+      {/* <Route path='/create' component={CreateContact} /> */}
+      <Route path='/create' render={({ history }) => (
+          <CreateContact onCreateContact={(contact) => {
+            this.createContact(contact);
+            history.push('/'); // redirects us (route) to the home page
+          }}/>
+      )} />
+      {/* <Route path='/topic/:topicId' component={CreateContact} />
+       To match params (get route), use match.params.topicId inside the component
+       match.url > contains the actual URL ('/topic/:123'), usable in LINK, example >> to=`${match.url}/${id}`
+       match.path > contains url parameters ('/topic/:topicId'), usable in ROUTE, example >> path=`${match.path}/:topicId`*/}
+
       {/* What we're using here is a JavaScript technique called short-circuit evaluation.
       If the first expression evaluates to true, then the second expression is run */}
         {/* {this.state.screen === 'list' ? (
