@@ -1,3 +1,5 @@
+This app's server is available at [Github Contacts Server ](https://github.com/udacity/reactnd-contacts-server2.git).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
